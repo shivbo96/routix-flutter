@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+* Update README documentation links.
+
 ## 1.0.1
 
 * Update repository URL to point to the dedicated SDK repository.
