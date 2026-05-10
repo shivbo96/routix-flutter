@@ -112,9 +112,8 @@ await Routix.trackCustomEvent('user_signup', metadata: {'method': 'google'});
 
 ## 🤝 Support
 
-- **Documentation**: [docs.routix.link](https://docs.routix.link)
+- **Documentation**: [routix.link/docs](https://routix.link/docs/)
 - **Issues**: Report bugs via the [GitHub Issue Tracker](https://github.com/shivbo96/routix-flutter/issues)
-- **Community**: Join our [Discord Server](https://discord.gg/routix)
 
 ---
 
