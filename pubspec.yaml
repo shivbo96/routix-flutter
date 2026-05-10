@@ -1,0 +1,31 @@
+name: routix_flutter
+description: Official Routix SDK for Flutter. Track app installs, attribute deep links, and measure conversion events with ease.
+version: 1.0.0
+homepage: https://routix.link
+repository: https://github.com/shivbo96/routix-flutter
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+  flutter: ">=2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  device_info_plus: ^9.0.0
+  package_info_plus: ^4.1.0
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^2.1.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: link.routix.sdk
+        pluginClass: RoutixFlutterPlugin
+      ios:
+        pluginClass: RoutixFlutterPlugin
