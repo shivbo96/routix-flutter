@@ -37,7 +37,7 @@ Add `routix_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  routix_flutter: ^1.0.0
+  routix_flutter: ^1.0.4
 ```
 
 ### Android Setup
@@ -72,8 +72,8 @@ void main() async {
 }
 ```
 
-### 2. Resolve Deep Links
-The `resolve()` method checks if the user arrived via a Routix link. It is idempotent—it handles the "first-open" logic automatically.
+### 2. Resolve Deep Links (Deferred)
+The `resolve()` method checks if the user arrived via a Routix link (e.g. from the App Store). It is idempotent—it handles the "first-open" logic automatically.
 
 ```dart
 // enableClipboard: true significantly improves iOS accuracy
@@ -81,19 +81,29 @@ final match = await Routix.resolve(enableClipboard: true);
 
 if (match != null && match.success) {
   print('Attributed to: ${match.shortCode}');
-  print('Match Source: ${match.matchSource}'); // 'referrer', 'fingerprint', 'clipboard'
-  
   // Access custom metadata set in the Routix dashboard
   final promo = match.metadata?['promo_code'];
 }
 ```
 
-### 3. Track Conversion Events
+### 3. Handle Deep Links (Direct)
+Parses a direct deep link URL when the app is already installed. This is handled locally without hitting the network.
 
-**Link-Attributed Events**
-Tie events directly to a campaign short code for ROI analysis.
 ```dart
-// Track a sale with revenue
+// Use a deep linking plugin like 'uni_links' to capture the incoming URL
+String? initialLink = await getInitialLink();
+if (initialLink != null) {
+  final match = Routix.handleDeepLink(initialLink);
+  if (match?.success == true) {
+     print('Opened via: ${match?.shortCode}');
+  }
+}
+```
+
+### 4. Track Events
+Tie conversion events directly to a campaign short code for ROI analysis.
+
+```dart
 await Routix.trackSale(
   'SUMMER_24',
   amount: 49.99,
@@ -102,8 +112,9 @@ await Routix.trackSale(
 );
 ```
 
-**Global Events**
-Track workspace-level actions like signups or tutorial completions.
+### 5. Track Custom Events
+Track workspace-level actions like signups or tutorial completions independent of any link.
+
 ```dart
 await Routix.trackCustomEvent('user_signup', metadata: {'method': 'google'});
 ```
