@@ -2,7 +2,7 @@
 
 [![Pub Version](https://img.shields.io/pub/v/routix_flutter?color=blue&logo=dart)](https://pub.dev/packages/routix_flutter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/shivbo96/flowlnk/test-sdk-flutter.yml?branch=main&logo=github)](https://github.com/shivbo96/flowlnk/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/shivbo96/routix-flutter/test-sdk-flutter.yml?branch=main&logo=github)](https://github.com/shivbo96/routix-flutter/actions)
 
 The official **Routix SDK** for Flutter. Empower your mobile application with industry-leading attribution, deep linking, and conversion measurement.
 
@@ -113,7 +113,7 @@ await Routix.trackCustomEvent('user_signup', metadata: {'method': 'google'});
 ## 🤝 Support
 
 - **Documentation**: [docs.routix.link](https://docs.routix.link)
-- **Issues**: Report bugs via the [GitHub Issue Tracker](https://github.com/shivbo96/flowlnk/issues)
+- **Issues**: Report bugs via the [GitHub Issue Tracker](https://github.com/shivbo96/routix-flutter/issues)
 - **Community**: Join our [Discord Server](https://discord.gg/routix)
 
 ---
