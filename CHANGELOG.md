@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5
+
+* Added Android namespace `link.routix.sdk` to comply with modern Gradle requirements.
+* Updated iOS podspec author email.
+* Upgraded Dart dependencies (`http` to `^1.5.0`, `device_info_plus` to `^12.4.0`, `package_info_plus` to `^9.0.1`, and `shared_preferences` to `^2.5.5`).
+
 ## 1.0.4
 
 * Unified versioning across all Routix SDKs.
