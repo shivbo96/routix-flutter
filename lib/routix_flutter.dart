@@ -8,7 +8,7 @@ import 'src/services/api_service.dart';
 import 'src/services/device_service.dart';
 
 class Routix {
-  static const String _version = '1.0.4';
+  static const String _version = '1.0.5';
   static const MethodChannel _channel = MethodChannel('link.routix.sdk/internal');
   
   static String? _apiKey;

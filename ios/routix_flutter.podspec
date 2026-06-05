@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   DESC
   s.homepage         = 'https://routix.link'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Routix' => 'support@routix.link' }
+  s.author           = { 'Routix' => 'info@routix.link' }
   s.source           = { :path => '.' }
   s.source_files     = 'Classes/**/*'
   s.dependency         'Flutter'

@@ -37,7 +37,7 @@ Add `routix_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  routix_flutter: ^1.0.4
+  routix_flutter: ^1.0.5
 ```
 
 ### Android Setup
