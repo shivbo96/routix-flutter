@@ -8,7 +8,7 @@ import 'src/services/api_service.dart';
 import 'src/services/device_service.dart';
 
 class Routix {
-  static const String _version = '1.0.5';
+  static const String _version = '1.0.6';
   static const MethodChannel _channel = MethodChannel('link.routix.sdk/internal');
   
   static String? _apiKey;
@@ -122,7 +122,14 @@ class Routix {
     if (type == 'lead') endpoint = 'lead';
     if (type == 'sale') endpoint = 'sale';
 
-    return _api!.trackLinkEvent(code, endpoint, metadata);
+    final deviceInfo = await DeviceService.getDeviceInfo();
+    final enrichedMetadata = {
+      ...?metadata,
+      'anonymous_device_id': metadata?['anonymous_device_id'] ?? metadata?['anonymousDeviceId'] ?? deviceInfo['anonymous_device_id'],
+      'device_info': metadata?['device_info'] ?? metadata?['deviceInfo'] ?? deviceInfo,
+    };
+
+    return _api!.trackLinkEvent(code, endpoint, enrichedMetadata);
   }
 
   static Future<bool> trackInstall(String code) => _trackInternal(code, type: 'install');
@@ -143,6 +150,12 @@ class Routix {
   /// Tracks a workspace-level custom event independent of any link.
   static Future<bool> trackCustomEvent(String eventType, {Map<String, dynamic>? metadata}) async {
     if (_api == null) return false;
-    return _api!.trackCustomEvent(eventType, metadata);
+    final deviceInfo = await DeviceService.getDeviceInfo();
+    final enrichedMetadata = {
+      ...?metadata,
+      'anonymous_device_id': metadata?['anonymous_device_id'] ?? metadata?['anonymousDeviceId'] ?? deviceInfo['anonymous_device_id'],
+      'device_info': metadata?['device_info'] ?? metadata?['deviceInfo'] ?? deviceInfo,
+    };
+    return _api!.trackCustomEvent(eventType, enrichedMetadata);
   }
 }
